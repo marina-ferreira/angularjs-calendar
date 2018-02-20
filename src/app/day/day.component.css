@@ -1,0 +1,20 @@
+:host {
+  width: calc(370px / 7);
+  display: flex;
+}
+
+.day {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  padding: 10px;
+  margin: auto;
+  text-align: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.day .label {
+  margin: auto;
+}

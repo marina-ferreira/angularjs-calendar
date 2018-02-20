@@ -1,7 +1,12 @@
 <div class="calendar">
   <ul class="week-days">
     <li *ngFor="let weekDay of weekDays"
-        class="week-day">{{weekDay}}
+        class="week-day">
+      <span class="label">{{weekDay}}</span>
     </li>
+  </ul>
+
+  <ul class="month-days">
+    <app-day *ngFor="let day of calendar.daysInMonth; let i = index" [day]="i + 1"></app-day>
   </ul>
 </div>

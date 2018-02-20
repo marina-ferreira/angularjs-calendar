@@ -1,21 +1,39 @@
 .calendar {
-  width: 500px;
-  height: 400px;
+  width: 400px;
+  height: 350px;
+  padding: 10px;
+  color: #1F2D3D;
+  display: flex;
+  flex-direction: column;
   border-radius: 20px;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
   background: rgba(255, 255, 255, 0.5);
 }
 
 .week-days {
+  flex: 1;
   list-style: none;
   display: flex;
 }
 
 .week-day {
   flex: 1;
-  margin: 0 5px;
-  padding: 10px;
-  text-align: center;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.5);
+  height: 50px;
+  margin: 0 2.5px;
+  display: flex;
+  border-radius: 50%;
+  color: #fff;
+  background: #E27586;
+}
+
+.week-day .label {
+  margin: auto;
+}
+
+.month-days {
+  flex: 3;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
