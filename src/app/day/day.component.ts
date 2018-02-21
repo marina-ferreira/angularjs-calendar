@@ -7,6 +7,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class DayComponent implements OnInit {
   @Input() day: number;
+  @Input() date: string;
+
+  isSelected: boolean = false;
 
   constructor() { }
 
