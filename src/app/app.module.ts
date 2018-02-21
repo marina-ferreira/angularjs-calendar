@@ -9,13 +9,15 @@ import { EventService } from './event.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
+import { DayDetailComponent } from './day-detail/day-detail.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CalendarComponent,
-    DayComponent
+    DayComponent,
+    DayDetailComponent
   ],
   imports: [
     BrowserModule,
