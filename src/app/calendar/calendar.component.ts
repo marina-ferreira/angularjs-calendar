@@ -1,15 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 
+import { Event } from '../event';
+import { EventService } from '../event.service';
+
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css']
 })
 export class CalendarComponent implements OnInit {
+
+  constructor(private eventService: EventService) { }
+
+  ngOnInit() {
+    this.getEvents()
+    this.buildCalendar();
+  }
+
   currentSelection: string;
   weekDays: Array<string> = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   calendar: Array<Object> = [];
+  events: Event[];
+
   today = moment();
 
   currentMonth: Object = {
@@ -32,15 +45,16 @@ export class CalendarComponent implements OnInit {
     year: this.today.clone().endOf('month').endOf('week').format('YYYY')
   }
 
-  buildCalendar(): void {
-    let [m1, m2, m3] = [this.lastMonth, this.currentMonth, this.nextMonth];
 
-    this.buildMonth(m1['day'], m1['days'], m1['month'], m1['year'])
-    this.buildMonth(1, m2['daysInMonth'], m2['month'], m2['year'])
-    this.buildMonth(1, m3['day'], m3['month'], m3['year'])
+  public isSelected(day: string): boolean {
+    return this.currentSelection === day;
   }
 
-  buildMonth(start: number, end: number, month: string, year: string): void {
+  public setSelected(day: string): void {
+    this.currentSelection = day;
+  }
+
+  private buildMonth(start: number, end: number, month: string, year: string): void {
     for (let i = start; i <= end; i++) {
       let day = i < 10 ? '0' + i : i.toString(),
           date = `${year}-${month}-${day}`
@@ -49,17 +63,16 @@ export class CalendarComponent implements OnInit {
     }
   }
 
-  constructor() { }
+  private buildCalendar(): void {
+    let [m1, m2, m3] = [this.lastMonth, this.currentMonth, this.nextMonth];
 
-  ngOnInit() {
-    this.buildCalendar();
+    this.buildMonth(m1['day'], m1['days'], m1['month'], m1['year'])
+    this.buildMonth(1, m2['daysInMonth'], m2['month'], m2['year'])
+    this.buildMonth(1, m3['day'], m3['month'], m3['year'])
   }
 
-  isSelected(day: string): boolean {
-    return this.currentSelection === day;
-  }
-
-  setSelected(day: string): void {
-    this.currentSelection = day;
+  private getEvents(): void {
+    this.eventService.getEvents()
+        .subscribe(events => {this.events = events; console.log(this.events)});
   }
 }
