@@ -19,7 +19,7 @@ export class CalendarComponent implements OnInit {
   }
 
   currentSelection: string;
-  weekDays: Array<string> = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  weekDays: Array<string> = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   calendar: Array<Object> = [];
   events: Event[];
 
@@ -73,6 +73,6 @@ export class CalendarComponent implements OnInit {
 
   private getEvents(): void {
     this.eventService.getEvents()
-        .subscribe(events => {this.events = events; console.log(this.events)});
+        .subscribe(events => this.events = events);
   }
 }
