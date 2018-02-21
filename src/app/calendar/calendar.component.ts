@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 
-import { Event } from '../event';
-import { EventService } from '../event.service';
-
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
@@ -11,17 +8,15 @@ import { EventService } from '../event.service';
 })
 export class CalendarComponent implements OnInit {
 
-  constructor(private eventService: EventService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.getEvents()
     this.buildCalendar();
   }
 
   currentSelection: string;
   weekDays: Array<string> = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   calendar: Array<Object> = [];
-  events: Event[];
 
   today = moment();
 
@@ -56,10 +51,11 @@ export class CalendarComponent implements OnInit {
 
   private buildMonth(start: number, end: number, month: string, year: string): void {
     for (let i = start; i <= end; i++) {
-      let day = i < 10 ? '0' + i : i.toString(),
-          date = `${year}-${month}-${day}`
+      let day = i < 10 ? '0' + i : i.toString();
+      let fullDate = `${year}-${month}-${day}`
 
-      this.calendar.push({ day: day, month: month, year: year, date: date });
+      let date = { day: day, month: month, year: year, fullDate: fullDate }
+      this.calendar.push(date);
     }
   }
 
@@ -69,10 +65,5 @@ export class CalendarComponent implements OnInit {
     this.buildMonth(m1['day'], m1['days'], m1['month'], m1['year'])
     this.buildMonth(1, m2['daysInMonth'], m2['month'], m2['year'])
     this.buildMonth(1, m3['day'], m3['month'], m3['year'])
-  }
-
-  private getEvents(): void {
-    this.eventService.getEvents()
-        .subscribe(events => this.events = events);
   }
 }

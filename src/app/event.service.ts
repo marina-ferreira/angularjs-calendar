@@ -15,11 +15,11 @@ export class EventService {
 
   constructor(private http: HttpClient) { }
 
-  private enventsUrl = 'api/events';
+  private eventsUrl = 'api/events';
 
-  getEvents(): Observable<Event[]> {
-    return this.http.get<Event[]>(this.enventsUrl)
-                    .pipe(catchError(this.handleError('getEvents', [])));
+  getEventsByDate(date: string): Observable<Event[]> {
+    return this.http.get<Event[]>(`${this.eventsUrl}/?date=${date}`)
+                    .pipe(.catchError(this.handleError<Event[]>('getEventsbyDate', [])));
   }
 
   private handleError<T> (operation = 'operation', result?: T) {
