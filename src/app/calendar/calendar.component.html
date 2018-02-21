@@ -7,11 +7,11 @@
   </ul>
 
   <ul class="month-days">
-    <app-day *ngFor="let elem of calendar.daysInMonth; let day = index"
-             [day]="day + 1"
-             [date]="calendar.date + '-' + (day + 1)"
-             [class.selected]="isSelected(calendar.date + '-' + (day + 1))"
-             (click)="setSelected(calendar.date + '-' + (day + 1))">
+    <app-day *ngFor="let date of calendar"
+             [day]="date.day"
+             [date]="date.date"
+             [class.selected]="isSelected(date.date)"
+             (click)="setSelected(date.date)">
     </app-day>
   </ul>
 </div>
