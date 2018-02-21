@@ -1,5 +1,6 @@
 <li class="day"
     [class.selected]="isSelected"
-    [class.has-event]="events?.length !== 0">
+    [class.has-event]="events?.length !== 0"
+    [attr.event-count]="events?.length">
   <span class="label">{{day}}</span>
 </li>
