@@ -9,8 +9,7 @@
 
     <ul class="month-days">
       <app-day *ngFor="let date of calendar"
-               [day]="date.day"
-               [date]="date.fullDate"
+               [date]="date"
                [class.selected]="isSelected(date.fullDate)"
                (click)="setSelected(date)">
       </app-day>

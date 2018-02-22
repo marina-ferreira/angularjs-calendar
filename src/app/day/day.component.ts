@@ -13,17 +13,16 @@ export class DayComponent implements OnInit {
   constructor(private eventService: EventService) { }
 
   ngOnInit() {
-    this.getDayEvents(this.date);
+    this.getDayEvents(this.date.fullDate);
   }
 
-  @Input() day: number;
-  @Input() date: string;
+  @Input() date: Object;
 
   isSelected: boolean = false;
   events: Event[];
 
   private getDayEvents(date: string): void {
     this.eventService.getEventsByDate(date)
-        .subscribe(events => this.events = events);
+        .subscribe(events => this.date['events'] = events);
   }
 }
