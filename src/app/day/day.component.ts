@@ -23,6 +23,6 @@ export class DayComponent implements OnInit {
 
   private getDayEvents(date: string): void {
     this.eventService.getEventsByDate(date)
-        .subscribe(events => this.date['events'] = events);
+                     .subscribe(events => this.date['events'] = events);
   }
 }

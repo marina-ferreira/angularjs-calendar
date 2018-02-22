@@ -9,4 +9,11 @@
       <li *ngFor="let event of date.events">{{event.title}}</li>
     </ul>
   </div>
+
+  <form #form="ngForm" (ngSubmit)="onFormSubmit(form)">
+    <label for="add-event"></label>
+    <input type="text" name="new-event" class="add-event" placeholder="Create event" ngModel autofocus>
+
+    <button type="submit" class="btn">+</button>
+  </form>
 </div>

@@ -41,7 +41,7 @@ export class CalendarComponent implements OnInit {
     year: this.today.clone().endOf('month').endOf('week').format('YYYY')
   }
 
-  selectedDate: Object = this.currentMonth;
+  selectedDate: Object = Object.assign(this.currentMonth, { events: [] });
 
   public isSelected(fullDate: string): boolean {
     if (!this.selectedDate) return;

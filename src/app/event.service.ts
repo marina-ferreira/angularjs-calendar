@@ -22,6 +22,11 @@ export class EventService {
                     .pipe(catchError(this.handleError<Event[]>('getEventsbyDate', [])));
   }
 
+  addEvent (event: Event): Observable<Event> {
+    return this.http.post<Event>(this.eventsUrl, event, httpOptions)
+                    .pipe(catchError(this.handleError<Event>('addEvent')));
+  }
+
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);

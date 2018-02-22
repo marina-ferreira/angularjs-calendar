@@ -18,3 +18,23 @@
 .day {
   font-size: 60px;
 }
+
+.add-event {
+  height: 30px;
+  padding: 10px;
+  margin-right: 10px;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+}
+
+.btn {
+  width: 30px;
+  height: 30px;
+  color: #fff;
+  text-align: center;
+  outline: none;
+  border: none;
+  border-radius: 50%;
+  background: #DC304B;
+}
