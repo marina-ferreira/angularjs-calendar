@@ -19,7 +19,7 @@ export class EventService {
 
   getEventsByDate(date: string): Observable<Event[]> {
     return this.http.get<Event[]>(`${this.eventsUrl}/?date=${date}`)
-                    .pipe(.catchError(this.handleError<Event[]>('getEventsbyDate', [])));
+                    .pipe(catchError(this.handleError<Event[]>('getEventsbyDate', [])));
   }
 
   private handleError<T> (operation = 'operation', result?: T) {

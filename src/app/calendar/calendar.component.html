@@ -1,17 +1,21 @@
-<div class="calendar">
-  <ul class="week-days">
-    <li *ngFor="let weekDay of weekDays"
-        class="week-day">
-      <span class="label">{{weekDay}}</span>
-    </li>
-  </ul>
+<div class="container">
+  <div class="calendar">
+    <ul class="week-days">
+      <li *ngFor="let weekDay of weekDays"
+          class="week-day">
+        <span class="label">{{weekDay}}</span>
+      </li>
+    </ul>
 
-  <ul class="month-days">
-    <app-day *ngFor="let date of calendar"
-             [day]="date.day"
-             [date]="date.fullDate"
-             [class.selected]="isSelected(date.fullDate)"
-             (click)="setSelected(date.fullDate)">
-    </app-day>
-  </ul>
+    <ul class="month-days">
+      <app-day *ngFor="let date of calendar"
+               [day]="date.day"
+               [date]="date.fullDate"
+               [class.selected]="isSelected(date.fullDate)"
+               (click)="setSelected(date)">
+      </app-day>
+    </ul>
+  </div>
+
+  <app-day-detail [date]="selectedDate"></app-day-detail>
 </div>

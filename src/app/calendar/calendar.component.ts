@@ -14,7 +14,6 @@ export class CalendarComponent implements OnInit {
     this.buildCalendar();
   }
 
-  currentSelection: string;
   weekDays: Array<string> = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   calendar: Array<Object> = [];
 
@@ -24,6 +23,8 @@ export class CalendarComponent implements OnInit {
     day: this.today.clone().date(),
     month: this.today.clone().format('MM'),
     year: this.today.clone().format('YYYY'),
+    date: this.today.clone().format('YYYY-MM-DD'),
+    weekDay: this.today.clone().format('dddd'),
     daysInMonth: this.today.clone().daysInMonth()
   }
 
@@ -40,21 +41,32 @@ export class CalendarComponent implements OnInit {
     year: this.today.clone().endOf('month').endOf('week').format('YYYY')
   }
 
+  selectedDate: Object = this.currentMonth;
 
-  public isSelected(day: string): boolean {
-    return this.currentSelection === day;
+  public isSelected(fullDate: string): boolean {
+    if (!this.selectedDate) return;
+
+    return this.selectedDate['fullDate'] === fullDate;
   }
 
-  public setSelected(day: string): void {
-    this.currentSelection = day;
+  public setSelected(day: Object): void {
+    this.selectedDate = day;
   }
 
   private buildMonth(start: number, end: number, month: string, year: string): void {
     for (let i = start; i <= end; i++) {
       let day = i < 10 ? '0' + i : i.toString();
-      let fullDate = `${year}-${month}-${day}`
+      let fullDate = `${year}-${month}-${day}`;
+      let weekDay = moment(fullDate).format('dddd');
 
-      let date = { day: day, month: month, year: year, fullDate: fullDate }
+      let date = {
+        day: day,
+        month: month,
+        year: year,
+        fullDate: fullDate,
+        weekDay: weekDay
+      }
+
       this.calendar.push(date);
     }
   }

@@ -12,4 +12,6 @@ export class DayDetailComponent implements OnInit {
   ngOnInit() {
   }
 
+  @Input() date: Object;
+
 }
