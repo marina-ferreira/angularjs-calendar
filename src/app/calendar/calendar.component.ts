@@ -22,6 +22,7 @@ export class CalendarComponent implements OnInit {
   currentMonth: Object = {
     day: this.today.clone().date(),
     month: this.today.clone().format('MM'),
+    monthText: this.today.clone().format('MMMM'),
     year: this.today.clone().format('YYYY'),
     date: this.today.clone().format('YYYY-MM-DD'),
     weekDay: this.today.clone().format('dddd'),

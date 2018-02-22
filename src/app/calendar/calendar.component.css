@@ -1,11 +1,11 @@
 .container {
   display: flex;
+  height: 450px;
 }
 
 .calendar {
   width: 400px;
-  height: 400px;
-  padding: 10px;
+  height: 100%;
   color: #1F2D3D;
   display: flex;
   flex-direction: column;
@@ -14,8 +14,21 @@
   background: rgba(255, 255, 255, 0.6);
 }
 
+.month {
+  flex: 1;
+  margin-bottom: 10px;
+  color: #fff;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px 20px 0 0;
+  background: #5C3037;
+}
+
 .week-days {
   flex: 1;
+  padding: 10px;
   list-style: none;
   display: flex;
 }
@@ -35,7 +48,8 @@
 }
 
 .month-days {
-  flex: 3;
+  flex: 4.5;
+  padding: 10px;
   list-style: none;
   display: flex;
   flex-wrap: wrap;

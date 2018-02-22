@@ -20,8 +20,8 @@ export class DayDetailComponent implements OnInit {
   onFormSubmit(form): void {
     let title = form.value['new-event'];
 
-    this.eventService.addEvent({ title, date: this.date['fullDate'] } as event)
-                     .subscribe(event => Object.assign(this.date['events'].push(event));
+    this.eventService.addEvent({ title, date: this.date['fullDate'] } as Event)
+                     .subscribe(event => Object.assign(this.date['events'].push(event)));
 
     form.reset();
   }
