@@ -1,6 +1,10 @@
 <div class="container">
   <div class="calendar">
-    <header class="month"><span>{{currentMonth.monthText}}</span></header>
+    <header class="month">
+      <span class="arrow prev"></span>
+      <span>{{currentMonth.monthText}}</span>
+      <span class="arrow next"></span>
+    </header>
 
     <ul class="week-days">
       <li *ngFor="let weekDay of weekDays"

@@ -16,14 +16,29 @@
 
 .month {
   flex: 1;
+  padding: 0 30px;
   margin-bottom: 10px;
   color: #fff;
   font-size: 20px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   border-radius: 20px 20px 0 0;
   background: #5C3037;
+}
+
+.arrow {
+  width: 15px;
+  height: 15px;
+  border-width: 1px 1px 0 0;
+  border-style: solid;
+  border-color: #fff;
+  transform: rotate(45deg);
+  background: transparent;
+}
+
+.arrow.prev {
+  transform: rotate(-135deg);
 }
 
 .week-days {
