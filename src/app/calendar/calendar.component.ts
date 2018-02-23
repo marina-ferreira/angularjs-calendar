@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 
+import { Month } from '../month';
+
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
@@ -18,31 +20,11 @@ export class CalendarComponent implements OnInit {
   calendar: Array<Object> = [];
 
   today = moment();
+  currentMonth: Month = new Month(this.today);
+  lastMonth: Month = new Month(this.today.clone().startOf('month').startOf('week'));
+  nextMonth: Month = new Month(this.today.clone().endOf('month').endOf('week'));
 
-  currentMonth: Object = {
-    day: this.today.clone().date(),
-    month: this.today.clone().format('MM'),
-    monthText: this.today.clone().format('MMMM'),
-    year: this.today.clone().format('YYYY'),
-    date: this.today.clone().format('YYYY-MM-DD'),
-    weekDay: this.today.clone().format('dddd'),
-    daysInMonth: this.today.clone().daysInMonth()
-  }
-
-  lastMonth: Object = {
-    day: this.today.clone().startOf('month').startOf('week').date(),
-    month: this.today.clone().startOf('month').startOf('week').format('MM'),
-    year: this.today.clone().startOf('month').startOf('week').format('YYYY'),
-    days: this.today.clone().startOf('month').startOf('week').daysInMonth()
-  }
-
-  nextMonth: Object = {
-    day: this.today.clone().endOf('month').endOf('week').date(),
-    month: this.today.clone().endOf('month').endOf('week').format('MM'),
-    year: this.today.clone().endOf('month').endOf('week').format('YYYY')
-  }
-
-  selectedDate: Object = Object.assign(this.currentMonth, { events: [] });
+  selectedDate: Object = this.currentMonth;
 
   public isSelected(fullDate: string): boolean {
     if (!this.selectedDate) return;
@@ -54,8 +36,8 @@ export class CalendarComponent implements OnInit {
     this.selectedDate = day;
   }
 
-  private buildMonth(start: number, end: number, month: string, year: string): void {
-    for (let i = start; i <= end; i++) {
+  private buildMonth(firstDay: number, lastDay: number, month: string, year: string): void {
+    for (let i = firstDay; i <= lastDay; i++) {
       let day = i < 10 ? '0' + i : i.toString();
       let fullDate = `${year}-${month}-${day}`;
       let weekDay = moment(fullDate).format('dddd');
@@ -75,7 +57,7 @@ export class CalendarComponent implements OnInit {
   private buildCalendar(): void {
     let [m1, m2, m3] = [this.lastMonth, this.currentMonth, this.nextMonth];
 
-    this.buildMonth(m1['day'], m1['days'], m1['month'], m1['year'])
+    this.buildMonth(m1['day'], m1['daysInMonth'], m1['month'], m1['year'])
     this.buildMonth(1, m2['daysInMonth'], m2['month'], m2['year'])
     this.buildMonth(1, m3['day'], m3['month'], m3['year'])
   }
