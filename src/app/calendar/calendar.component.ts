@@ -26,39 +26,14 @@ export class CalendarComponent implements OnInit {
 
   selectedDate: Object = this.currentMonth;
 
-  public isSelected(fullDate: string): boolean {
-    if (!this.selectedDate) return;
-
-    return this.selectedDate['fullDate'] === fullDate;
-  }
-
-  public setSelected(day: Object): void {
-    this.selectedDate = day;
-  }
-
-  private buildMonth(firstDay: number, lastDay: number, month: string, year: string): void {
-    for (let i = firstDay; i <= lastDay; i++) {
-      let day = i < 10 ? '0' + i : i.toString();
-      let fullDate = `${year}-${month}-${day}`;
-      let weekDay = moment(fullDate).format('dddd');
-
-      let date = {
-        day: day,
-        month: month,
-        year: year,
-        fullDate: fullDate,
-        weekDay: weekDay
-      }
-
-      this.calendar.push(date);
-    }
-  }
-
   private buildCalendar(): void {
     let [m1, m2, m3] = [this.lastMonth, this.currentMonth, this.nextMonth];
 
-    this.buildMonth(m1['day'], m1['daysInMonth'], m1['month'], m1['year'])
-    this.buildMonth(1, m2['daysInMonth'], m2['month'], m2['year'])
-    this.buildMonth(1, m3['day'], m3['month'], m3['year'])
+    this.lastMonth.buildMonth(m1['day'], m1['daysInMonth'], m1['month'], m1['year']);
+    this.currentMonth.buildMonth(1, m2['daysInMonth'], m2['month'], m2['year']);
+    this.nextMonth.buildMonth(1, m3['day'], m3['month'], m3['year']);
+
+    this.calendar = m1['calendar'].concat(m2['calendar'])
+                                  .concat(m3['calendar']);
   }
 }

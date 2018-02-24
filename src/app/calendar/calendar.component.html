@@ -16,8 +16,8 @@
     <ul class="month-days">
       <app-day *ngFor="let date of calendar"
                [date]="date"
-               [class.selected]="isSelected(date.fullDate)"
-               (click)="setSelected(date)">
+               [class.selected]="selectedDate.fullDate === date.fullDate"
+               (click)="selectedDate = date">
       </app-day>
     </ul>
   </div>
