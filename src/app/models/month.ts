@@ -2,6 +2,7 @@ import * as moment from 'moment';
 
 export class Month {
   constructor(instant: moment.Moment, kind: string) {
+    this['instant'] = instant;
     this['day'] = instant.clone().date();
     this['month'] = instant.clone().format('MM');
     this['monthText'] = instant.clone().format('MMMM');
