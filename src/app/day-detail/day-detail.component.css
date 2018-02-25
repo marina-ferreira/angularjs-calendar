@@ -1,10 +1,10 @@
 .day-details {
   width: 250px;
   height: 100%;
-  padding: 30px;
+  padding: 100px 30px 30px;
   margin-left: 30px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
   border-radius: 20px;
