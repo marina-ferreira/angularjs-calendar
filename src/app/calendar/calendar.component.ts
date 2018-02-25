@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 
-import { Calendar } from '../calendar';
+import { Calendar } from '../models/calendar';
 
 @Component({
   selector: 'app-calendar',
