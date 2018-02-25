@@ -2,7 +2,9 @@
   <div class="calendar">
     <header class="month">
       <span class="arrow prev" (click)="slide('subtract')"></span>
-      <span>{{calendar.currentMonth.monthText}}</span>
+      <span>
+        {{calendar.currentMonth.monthText}} - {{calendar.currentMonth.year}}
+      </span>
       <span class="arrow next" (click)="slide('add')"></span>
     </header>
 

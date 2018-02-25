@@ -33,13 +33,20 @@
   border-width: 1px 1px 0 0;
   border-style: solid;
   border-color: #fff;
+  cursor: pointer;
   transform: rotate(45deg);
+  transition: all .2s;
   background: transparent;
 }
 
 .arrow.prev {
   transform: rotate(-135deg);
 }
+
+.arrow.prev:hover { transform: rotate(-135deg) scale(1.1); }
+.arrow.next:hover { transform: rotate(45deg) scale(1.1); }
+.arrow.prev:active { transform: rotate(-135deg) scale(1); }
+.arrow.next:active { transform: rotate(45deg) scale(1); }
 
 .week-days {
   flex: 1;
