@@ -1,9 +1,9 @@
 <div class="container">
   <div class="calendar">
     <header class="month">
-      <span class="arrow prev"></span>
-      <span>{{currentMonth.monthText}}</span>
-      <span class="arrow next"></span>
+      <span class="arrow prev" (click)="slide(-1)"></span>
+      <span>{{month.currentMonth.monthText}}</span>
+      <span class="arrow next" (click)="slide(1)"></span>
     </header>
 
     <ul class="week-days">

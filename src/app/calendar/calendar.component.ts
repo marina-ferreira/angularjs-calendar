@@ -13,27 +13,14 @@ export class CalendarComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.buildCalendar();
+    this.month.buildCalendar();
+    this.calendar = this.month['calendar'];
   }
 
   weekDays: Array<string> = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-  calendar: Array<Object> = [];
 
   today = moment();
-  currentMonth: Month = new Month(this.today);
-  lastMonth: Month = new Month(this.today.clone().startOf('month').startOf('week'));
-  nextMonth: Month = new Month(this.today.clone().endOf('month').endOf('week'));
-
-  selectedDate: Object = this.currentMonth;
-
-  private buildCalendar(): void {
-    let [m1, m2, m3] = [this.lastMonth, this.currentMonth, this.nextMonth];
-
-    this.lastMonth.buildMonth(m1['day'], m1['daysInMonth'], m1['month'], m1['year']);
-    this.currentMonth.buildMonth(1, m2['daysInMonth'], m2['month'], m2['year']);
-    this.nextMonth.buildMonth(1, m3['day'], m3['month'], m3['year']);
-
-    this.calendar = m1['calendar'].concat(m2['calendar'])
-                                  .concat(m3['calendar']);
-  }
+  month: Month = new Month(this.today);
+  calendar: Array<Object>;
+  selectedDate: Object = this.month['currentMonth'];
 }
