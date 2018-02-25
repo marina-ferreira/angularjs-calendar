@@ -10,6 +10,7 @@ export class Calendar {
     this['currentMonth'] = new Month(instant, 'current');
     this['lastMonth'] = new Month(lastMonth, 'last');
     this['nextMonth'] = new Month(nextMonth, 'next');
+    this['fullMonth'] = [];
 
     this.buildCalendar();
   }
