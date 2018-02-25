@@ -23,4 +23,12 @@ export class CalendarComponent implements OnInit {
   month: Month = new Month(this.today);
   calendar: Array<Object>;
   selectedDate: Object = this.month['currentMonth'];
+
+  slide(direction: string): void {
+    let date = `${this.month[direction]['year']}-${this.month[direction]['month']}`;
+    this.month = new Month(moment(date));
+
+    this.month.buildCalendar();
+    this.calendar = this.month['calendar'];
+  }
 }
