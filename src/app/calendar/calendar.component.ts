@@ -19,7 +19,11 @@ export class CalendarComponent implements OnInit {
 
   today = moment();
   calendar: Calendar = new Calendar(this.today);
-  selectedDate: Object = this.calendar['currentMonth'];
+  selectedDate: Object = {
+    day: this.today.clone().format('DD'),
+    fullDate: this.today.clone().format('YYYY-MM-DD'),
+    weekDay: this.today.clone().format('dddd')
+  };
 
   slide(direction: string): void {
     let date = this.calendar['currentMonth']['instant'][direction](1, 'month');

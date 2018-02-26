@@ -18,7 +18,6 @@ export class DayComponent implements OnInit {
 
   @Input() date: Object;
 
-  isSelected: boolean = false;
   events: Event[];
 
   private getDayEvents(date: string): void {
