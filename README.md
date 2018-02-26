@@ -4,7 +4,7 @@ AngularJS 5 Calendar App developed for learning purposes.
 
 Visit project at: https://inblackandwhite.github.io/angularjs-calendar/
 
-![](/Users/marina/workspace/angularjs/angularjs-calendar/src/calendar.gif)
+![Calendar Gif](./src/calendar.gif)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.3.
 
