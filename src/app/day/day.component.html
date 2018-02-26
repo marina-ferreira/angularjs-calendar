@@ -1,6 +1,6 @@
 <li class="day"
     [class.has-event]="date['events']?.length > 0"
-    [class.trailing]="date.kind !== 'current'"
+    [class.trailing]="date['kind'] !== 'current'"
     [attr.event-count]="date['events']?.length">
   <span class="label">{{date['day']}}</span>
 </li>
