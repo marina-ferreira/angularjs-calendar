@@ -3,7 +3,7 @@
     <header class="month">
       <span class="arrow prev" (click)="slide('subtract')"></span>
       <span>
-        {{calendar.currentMonth.monthText}} - {{calendar.currentMonth.year}}
+        {{calendar['currentMonth']['monthText']}} - {{calendar['currentMonth']['year']}}
       </span>
       <span class="arrow next" (click)="slide('add')"></span>
     </header>
@@ -16,9 +16,9 @@
     </ul>
 
     <ul class="month-days">
-      <app-day *ngFor="let date of calendar.fullMonth"
+      <app-day *ngFor="let date of calendar['fullMonth']"
                [date]="date"
-               [class.selected]="selectedDate.fullDate === date.fullDate"
+               [class.selected]="selectedDate['fullDate'] === date['fullDate']"
                (click)="selectedDate = date">
       </app-day>
     </ul>

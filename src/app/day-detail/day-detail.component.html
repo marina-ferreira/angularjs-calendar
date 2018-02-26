@@ -1,12 +1,12 @@
 <div class="day-details">
   <div class="wrapper">
-    <div class="day">{{date.day}}</div>
-    <span class="week-day">{{date.weekDay}}</span>
+    <div class="day">{{date['day']}}</div>
+    <span class="week-day">{{date['weekDay']}}</span>
   </div>
 
   <div class="events">
     <ul>
-      <li *ngFor="let event of date.events">{{event.title}}</li>
+      <li *ngFor="let event of date['events']">{{event.title}}</li>
     </ul>
   </div>
 
