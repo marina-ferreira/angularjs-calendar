@@ -27,6 +27,10 @@
   margin: auto;
 }
 
+.day.trailing {
+  color: #959595;
+}
+
 .day.has-event:before {
   content: '•';
   color: red;

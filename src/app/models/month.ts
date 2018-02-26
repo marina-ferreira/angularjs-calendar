@@ -9,6 +9,7 @@ export class Month {
     this['year'] = instant.clone().format('YYYY');
     this['weekDay'] = instant.clone().format('dddd');
     this['daysInMonth'] = instant.clone().daysInMonth();
+    this['kind'] = kind;
     this['events'] = [];
     this['days'] = [];
 
@@ -32,7 +33,8 @@ export class Month {
         month: this['month'],
         year: this['year'],
         fullDate: fullDate,
-        weekDay: weekDay
+        weekDay: weekDay,
+        kind: this['kind']
       };
 
       this['days'].push(date);
